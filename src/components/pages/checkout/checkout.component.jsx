@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+import { formatNumber } from "./checkout.utils";
 
 import {
   removeItem,
@@ -77,21 +78,21 @@ const CheckoutPage = ({
               </QuantityContainer>
             </ItemDescription>
             <CurencySym />
-            <ItemPrice>{catItem.price}</ItemPrice>
+            <ItemPrice>{formatNumber(catItem.price)}</ItemPrice>
           </CheckoutItmContainer>
         ))}
         <TotalAmountContainer>
           <TotalAmountSpan>
             {" "}
             Subtotal ({totalQuantity} item ) : <CurencySymSubTotal />{" "}
-            {totalAmount}{" "}
+            {formatNumber(totalAmount)}{" "}
           </TotalAmountSpan>
         </TotalAmountContainer>
       </CheckoutItmsContainer>
       <ProceedToBuyContainer>
         <ToatalAmoutPayment>
           Subtotal ({totalQuantity} item ) : <CurencySymSubTotal />{" "}
-          {totalAmount}
+          {formatNumber(totalAmount)}
         </ToatalAmoutPayment>
         <PaymentButton>Proced to Pay</PaymentButton>
       </ProceedToBuyContainer>
